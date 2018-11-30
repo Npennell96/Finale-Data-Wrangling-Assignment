@@ -1,6 +1,19 @@
 # Finale-Data-Wrangling-Assignment
 The finale assignment for my honours class, Data Pre-processing. In this assignment all the data wrangling skills that have been taught are used and explained. 
 
+---
+title: "MATH2349 Semester 2, 2018"
+author: "Nicholas Pennell, s3588789"
+subtitle: Assignment 3
+output:
+  html_document:
+    df_print: paged
+    html_notebook: default
+    toc: yes
+  pdf_document:
+    toc: yes
+---
+
 ## Required packages 
 
 ```{r, warning=FALSE, message=FALSE}
@@ -48,8 +61,6 @@ The `csv` files are all read in with `read_csv()` from `readr` the merged using 
   baseball <- batting %>% inner_join(awards, by = c("playerID", "yearID", "lgID"))
 # Removing unwated stint
   baseball <- baseball[, -c(3)]
-# Data Table Sample
-  datatable(baseball[1:50, ])
 
 ```
 
@@ -186,9 +197,6 @@ Also added `1B` to use in `SLP` and if the player is a pitcher or not, for futer
     baseball$pitcher <- ifelse(grepl("Pitcher", baseball$awardID) == TRUE | baseball$G_batting == 0 |
                                  baseball$AB == 0 | baseball$notes %in% pitcher.notes,
                            TRUE, FALSE)
-    
-# sample table with new varibles
-  baseball[1:50, ]
       
 ```
 
